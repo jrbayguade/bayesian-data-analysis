@@ -38,4 +38,7 @@ probBlackBlue <- probBlueBlack * probBlack / probBlue
 probBlackBlue
 
 #Exercise 6: 
-propportionHairEye["Brown",] / propportionHair["Brown"]
+probColBrown <- propportionHairEye["Brown",] / propportionHair["Brown"]
+probColBrown
+
+
