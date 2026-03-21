@@ -52,3 +52,36 @@ p_g_given_not_b = 0.82
 # calculate P(B|G)
 result = bayes_theorem(p_b, p_g_given_b, p_g_given_not_b)
 result
+
+
+
+# Definim la funció Negative Log-Likelihood (NLogV)
+# Els arguments han de ser els paràmetres que vols estimar
+NLogV <- function(mu, sigma) {
+  # Calculem el logaritme de la densitat per a cada dada
+  log_likelihood <- dnorm(datos_aleatorios, mean = mu, sd = sigma, log = TRUE)
+  
+  # Retornem el negatiu de la suma (perquè mle minimitza)
+  return(-sum(log_likelihood))
+}
+
+
+NNPosteriori <- function(datamean, sigma, n, mu, tau){
+  posteriorimean <- (n*datamean*tau^2+mu*sigma^2)/(n*tau^2+sigma^2)
+  posteriorisigma <- sqrt(sigma^2*tau^2/(n*tau^2+sigma^2))
+  
+  resultado = list("posteriorimean"=posteriorimean, 
+                   "posteriorisigma"=posteriorisigma)
+  
+  return(resultado)
+}
+
+BetaBetaPosteriori <- function (datasum, n, alfa, beta) {
+  posteriorialfa <- alfa + datasum
+  posterioribeta <- beta + n - datasum
+  
+  resultado = list("posteriorialfa"= posteriorialfa,
+                   "posterioribeta"= posterioribeta)
+  
+  return(resultado)
+}
