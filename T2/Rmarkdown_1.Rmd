@@ -1,0 +1,17 @@
+---
+title: "Rmarkdown_1"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+# Test 1
+## Test 2
+### Test 3
+#### Test 4
+hellow how is that going
+
+```{r}
+a <- 1
+a
+```
